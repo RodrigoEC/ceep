@@ -3,17 +3,16 @@ import CardNota from '../CardNota'
 import './estilo.css'
 
 export default class ListaDeNotas extends Component {
-
 	render() {
 		return (
 			<ul className='lista-notas'>
-                {this.props.notas.map((nota, index) => {
-                    return(
-                    <li key={index} className='lista-notas_item'>
-                        <CardNota titulo={nota.titulo} texto={nota.texto}/>
-                    </li>
-                    );
-                })}
+				{this.props.notas.map((nota, index) => {
+					return (
+						<li key={index} className='lista-notas_item'>
+							<CardNota titulo={nota.titulo} texto={nota.texto} />
+						</li>
+					);
+				})}
 			</ul>
 		);
 	};
