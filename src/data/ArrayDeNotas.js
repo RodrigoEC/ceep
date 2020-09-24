@@ -8,11 +8,13 @@ export default class ArrayDeNotas {
         this._inscritos.push(func);
     }
 
+    desinscrever(func) {
+        this._notas = this._notas.filter(f => f !== func);
+    }
+
     notifica() {
         this._inscritos.forEach(func => func(this.notas));
     }
-
-
 
     adicionaNota(titulo, texto, categoria) {
         const novaNota = new Nota(titulo, texto, categoria);
