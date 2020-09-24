@@ -2,50 +2,33 @@ import React, { Component } from 'react';
 import ListaDeNotas from "./components/ListaDeNotas"
 import FormularioCadastro from "./components/FormularioCadastro"
 import ListaDeCategorias from "./components/ListaDeCategorias"
+
 import './assets/App.css';
 import './assets/index.css';
+import Categorias from './data/Categorias';
+import ArrayDeNotas from './data/ArrayDeNotas';
 
 export default class App extends Component {
-
   constructor() {
-    super()
-    this.notas = [];
-    this.state = {
-      notas: [],
-      categorias: ["Estudo", "Jogos"]
-    };
-  }
-
-  criarNota(titulo, texto, categoria) {
-    const novaNota = { titulo, texto, categoria };
-    const novoArrayNotas = [...this.state.notas, novaNota]
-    const novoEstado = {
-      notas: novoArrayNotas
-    }
-
-    this.setState(novoEstado)
-  }
-
-  deletarNota(index) {
-    let arrayNotas = this.state.notas;
-    arrayNotas.splice(index, 1);
-
-    this.setState({ notas: arrayNotas })
-  }
-
-  adicionarCategoria(nomeCategoria) {
-    const novoArrayCategorias = [...this.state.categorias, nomeCategoria];
-    this.setState({...this.state, categorias: novoArrayCategorias});
+    super();
+    this.categorias = new Categorias();
+    this.notas = new ArrayDeNotas();
   }
 
   render() {
     return (
       <section className='conteudo'>
-        <FormularioCadastro categorias={this.state.categorias} criarNota={this.criarNota.bind(this)} />
+        <FormularioCadastro 
+          categorias={this.categorias}
+          criarNota={this.notas.adicionaNota.bind(this.notas)} />
 
         <main className='conteudo-principal'>
-          <ListaDeCategorias adicionarCategoria={this.adicionarCategoria.bind(this)} categorias={this.state.categorias}/>
-          <ListaDeNotas apagarNota={this.deletarNota.bind(this)} notas={this.state.notas} />
+          <ListaDeCategorias
+            adicionarCategoria={this.categorias.adicionaCategoria.bind(this.categorias)}
+            categorias={this.categorias}/>
+          <ListaDeNotas
+           apagarNota={this.notas.apagarNota.bind(this.notas)}
+           notas={this.notas} />
         </main>
       </section>
     );
