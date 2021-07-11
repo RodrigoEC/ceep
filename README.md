@@ -1,6 +1,8 @@
 # :clipboard: CEEP
 CEEP is a project created while I was taking React classes in Alura Cursos Online, so the main go of this project is for me to learn the basic concepts of React and put it in action. So, what's CEEP? CEEP is a note creater where you can add a `title` and a corresponding `text` in a form and you can create a note for that.
 
+[readme](https://github.com/RodrigoEC/ceep/tree/master/src)
+
 <div align=center>
     <img src='./src/assets/img/note.gif' width='400px'>
 </div>
